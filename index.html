@@ -18,27 +18,31 @@
 			<!-- Add Recipes Here -->
 		</main>
 		<!-- For the Explore section - Remove "hidden" class before beginning -->
-		<form id="new-recipe" class="hidden">
+		<form id="new-recipe">
 			<fieldset>
 				<legend>Image:</legend>
 				<label for="imgSrc">
 					Source:
-					<input type="text" id="imgSrc" name="imgSrc" required />
+					<!-- <input type="text" id="imgSrc" name="imgSrc" required /> -->
+					<input type="text" id="imgSrc" name="imgSrc">
 				</label>
 				<label for="imgAlt">
 					Alt Text:
-					<input type="text" id="imgAlt" name="imgAlt" required />
+					<!-- <input type="text" id="imgAlt" name="imgAlt" required /> -->
+					<input type="text" id="imgAlt" name="imgAlt" >
 				</label>
 			</fieldset>
 			<fieldset>
 				<legend>Title:</legend>
 				<label for="titleTxt"
 					>Text:
-					<input type="text" id="titleTxt" name="titleTxt" required />
+					<!-- <input type="text" id="titleTxt" name="titleTxt" required /> -->
+					<input type="text" id="titleTxt" name="titleTxt">
 				</label>
 				<label for="titleLnk"
 					>Link:
-					<input type="url" id="titleLnk" name="titleLnk" required />
+					<!-- <input type="url" id="titleLnk" name="titleLnk"  required/>  -->
+					<input type="url" id="titleLnk" name="titleLnk" >
 				</label>
 			</fieldset>
 			<fieldset>
@@ -58,15 +62,18 @@
 				<legend>Other Info:</legend>
 				<label for="organization">
 					Organization:
-					<input type="text" id="organization" name="organization" required />
+					<!-- <input type="text" id="organization" name="organization" required /> -->
+					<input type="text" id="organization" name="organization">
 				</label>
 				<label for="lengthTime">
 					Length (time):
-					<input type="text" id="lengthTime" name="lengthTime" required />
+					<!-- <input type="text" id="lengthTime" name="lengthTime" required /> -->
+					<input type="text" id="lengthTime" name="lengthTime">
 				</label>
 				<label for="ingredients">
 					<p>Ingredients:</p>
-					<textarea name="ingredients" id="ingredients" cols="38" rows="5" required></textarea>
+					<!-- <textarea name="ingredients" id="ingredients" cols="38" rows="5" required></textarea> -->
+					<textarea name="ingredients" id="ingredients" cols="38" rows="5"></textarea>
 				</label>
 			</fieldset>
 			<button type="submit">Add Recipe</button>
