@@ -12,7 +12,6 @@ function init() {
 	addRecipesToDocument(recipes);
 	// Add the event listeners to the form elements
 	initFormHandler();
-	console.log("called initFormHandler()");
 }
 
 /**
@@ -28,14 +27,11 @@ function getRecipesFromStorage() {
 	//           be no more than a few lines.
 	let myArray = [];
 	let keys = Object.keys(localStorage);
-	//console.log(keys);
+	console.log(keys.length);
 	for(let index = 0; index < keys.length; index += 1){
 		//console.log("This is one element:"+localStorage.getItem(keys[index]));
 		myArray.push(localStorage.getItem(keys[index]));
-		//console.log(keys[index].length);
-		// for(let j = 0; j < keys[index].length; j ++){
-		// 	myArray.push(keys[index][j]);
-		// }
+
 	}
 	let fixedArray = JSON.parse(myArray);
 	//console.log(fixedArray);
@@ -97,17 +93,22 @@ function initFormHandler() {
 		// Steps B4-B9 will occur inside the event listener from step B3
 	// B4. TODO - Create a new FormData object from the <form> element reference above
 		let formData = new FormData(form);
-		console.log('Form data:', formData);
+		for (let [key, value] of formData.entries()) {
+            console.log(`Key: ${key}, Value: ${value}`);
+        }
 
 	// B5. TODO - Create an empty object (we'll refer to this object as recipeObject to
 	//            make this easier to read), and then extract the keys and corresponding
 	//            values from the FormData object and insert them into recipeObject
 		let recipeObject = [];
-		let keys = formData.keys();
-		console.log(keys);
-		for(let i = 0; i < keys.length; i ++){
-			recipeObject.push(formData.get(keys[i]));//potential issues based on phrasing
-		}
+		let keys = formData.keys(); // keys() returns an iterator
+		for (let [key, value] of formData.entries()) {
+            //console.log(`Key: ${key}, Value: ${value}`);
+			recipeObject.push(`\"${key}\":\"${value}\"`);
+        }
+		console.log("Length of recipeObject:", recipeObject.length);
+
+		//recipeObject.push("Plain text");
 		console.log("this is our filled recipeObject:", recipeObject);
 		
 	// B6. TODO - Create a new <recipe-card> element
@@ -120,15 +121,29 @@ function initFormHandler() {
 		console.log("This is what we just appended to main:",recipeCard);
 	// B9. TODO - Get the recipes array from localStorage, add this new recipe to it, and
 	//            then save the recipes array back to localStorage
-		let list = localStorage.getItem('recipes');
-		console.log('This is list before the parse:',list);
-
-		list = JSON.parse(list);
-		console.log("This is the length of the list:", list.length);
-		list.push(recipeObject);
+		let stringlist = localStorage.getItem('recipes');//this is grabbing that string [{}{}{}]
+		
+		let modifiedStr = stringlist.split(']')[0];
+		console.log("What is the recipe Object:", recipeObject);
+		let length = recipeObject.length;
+		modifiedStr += ",{";
+		for(let i = 0; i < length; i++){
+			modifiedStr += recipeObject[i];
+			if(i != length -1){
+				modifiedStr += ",";
+			}
+		}
+		modifiedStr += "}";
+		//modifiedStr += recipeObject.toString();
+		//console.log('This is list before the parse:',list);
+		modifiedStr += "]";
+		console.log(modifiedStr);
+		// list = JSON.parse(list);
+		// console.log("This is the length of the list:", list.length);
+		// list.push(recipeObject);
 		// console.log("This is our new list of recipes:", list);
-		// localStorage.setItem('recipes', list);
-		saveRecipesToStorage(list);
+		localStorage.setItem('recipes', modifiedStr);
+		//saveRecipesToStorage(list);
 	});
 	
 	// B10. TODO - Get a reference to the "Clear Local Storage" button
