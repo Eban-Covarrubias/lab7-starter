@@ -56,7 +56,7 @@ class RecipeCard extends HTMLElement {
 		// 			 Do NOT include the <article> tags within the innerHTML of the element you create.
 		//           Remember to replace all the placeholders in the template with the data passed in.
 		//           i.e. imgSrc, titleLnk, etc
-		article.innerHTML = "<img src=\""+data.imgSrc+"\"alt=\"Recipe Title\"><p class=\"title\"><a href="+data.titleLnk+">"+data.titleTxt+"</a></p><p class=\"organization\">"+data.organization+"</p><div class=\"rating\"><span>"+data.rating+"</span><img src=\"../images/icons/"+data.rating+"-star.svg\" alt="+data.rating+"stars\"><span>("+data.numRatings+")</span></div><time>"+data.lengthTime+"</time><p class=\"ingredients\">"+data.ingredients+"</p>";
+		article.innerHTML = "<img src=\""+data.imgSrc+"\"alt=\"Recipe Title\"><p class=\"title\"><a href="+data.titleLnk+">"+data.titleTxt+"</a></p><p class=\"organization\">"+data.organization+"</p><div class=\"rating\"><span>"+data.rating+"</span><img src=\"assets/images/icons/"+data.rating+"-star.svg\" alt="+data.rating+"stars\"><span>("+data.numRatings+")</span></div><time>"+data.lengthTime+"</time><p class=\"ingredients\">"+data.ingredients+"</p>";
 
 	}
 }
